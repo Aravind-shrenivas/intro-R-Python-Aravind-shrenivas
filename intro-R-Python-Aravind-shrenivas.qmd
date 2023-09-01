@@ -1,0 +1,153 @@
+---
+title: "INFO 523 Exercise"
+subtitle: "HW1: Introduction to R Exercise"
+format: 
+  pdf:
+    toc: true
+    number-sections: false
+    colorlinks: true
+
+editor: visual
+---
+
+# Part 1
+
+## Basics of R
+
+### Finding the R version
+
+```{r}
+R.version
+```
+
+The code `R.version()`{style="color: #252525;"} gives us the details of the platform, the kind of system on which our system operates (e.g., here it is a 64-bit operating system), the OS, the date, the version of R installed (4.3.1), and other general information about the environment where R has been installed.
+
+### Packages
+
+Packages are important components of any programming language because they are like supporting pillars which makes our code run. There are several packages in R which will be used for various purposes.
+
+Let's install the package `DMwR2` . The syntax for this is `install.packages("DMwR2")` .
+
+```{r, eval=FALSE}
+install.packages("DMwR2")
+```
+
+This is one of the main package which we are going to use in Data mining subject. We shall see some of it's other functionalities below.
+
+If we run into any kind of trouble with respect to any package we installed, we can use the code `help()` to see what is really in the document. Now, let's test it out by running the code `help(package="DMwR2")` .
+
+```{r}
+help(package="DMwR2")
+```
+
+![fig 1. help() Output](output-help().png)
+
+When I executed the `help(package="DMwR2")` command, the help menu which was on the side opened up which contains the compelte documentation for the package 'DMwR2'.
+
+After installing of package, I need to use it. So, there are two ways by which I can access the package which I will list below.
+
+1.  There is a keyword called `library()` . When I want to use a function repeatedly, I can just load up the function to the temporary memory using this function for frequent use. For eg. let's say I want to use this 'DMwR2' package, the following code must be used.
+
+    ```{r}
+    library(DMwR2)
+    ```
+
+    Now, I can access any function or dataset associated with the package 'DMwR2' by using it's name directly. An example is given below.
+
+    ```{r}
+    # I will load an available dataset 'algae' directly by referencing it's name
+    data(algae)
+    algae
+    ```
+
+    If I want to find the row number of entries which contains many NA data, I will use `manyNAs(algae)` .
+
+    ```{r}
+    manyNAs(algae)
+    ```
+
+    From the above, we can infer that columns 62 and 199 contains many inaccurate data.
+
+2.  If I want to use a function only once or twice I can use the syntax `function/dataset` through the notation `package::functionname` .
+
+    ```{r}
+    DMwR2::algae
+    ```
+
+If I want to look into the installed packages in my system, I can use the code `library()` without passing any arguments inside it followed by `(.packages())` .
+
+```{r}
+library()
+(.packages())
+```
+
+So, the above packages are loaded for my current session in my system.
+
+To be more precise, I will consider `library()` to be a super set and the package which i want to check be a subset. Here `(.packages())` lists out all the available packages in the system.
+
+The `datach` function removes a package installed. To demonstrate it, I will first install a package called 'dbplyr' and then I will remove it from my session using `detach` command.
+
+```{r}
+install.packages("dbplyr") # I am installing the package
+
+library(dbplyr) 
+(.packages()) # I am oading the package to the current session
+
+detach("package:dbplyr", unload=TRUE) 
+(.packages()) # I am detaching the package
+
+library(dplyr)# I am loading wanted library
+    
+```
+
+In the above example, I have successfully detached the wrong package and added the right package.
+
+I can also see the installed packages using the code `installed.packages()` .
+
+```{r}
+installed.packages() 
+```
+
+To find if the installed packages have a newer version, I will use the code `old.packages()` .
+
+```{r}
+old.packages()
+```
+
+Similarly I can update my packages using `update.packages()` .
+
+```{r, eval=FALSE}
+update.packages()
+```
+
+Moreover, I can just type in the name of the function installed through a package by just entering the name. For example, `mean` is a function from base package.
+
+```{r}
+mean
+```
+
+To find out more information about `mean` I can always use the code `help(mean)`. If there are two functions having the same name but belong to different packages, the code `package::functionname` shall be used to exactly specify the function and it's package.
+
+```{r}
+help(mean)
+```
+
+Let's say if i want to do a neural networking project in R and I want to find the related packages, I can browse through the web using the code `RSiteSearch('neural networks')`
+
+```{r}
+RSiteSearch('neural networks')
+```
+
+### Project and session management
+
+### Save changes
+
+### R Objects and Variables
+
+### R functions
+
+### Factors
+
+### R data structures
+
+# Part 2
